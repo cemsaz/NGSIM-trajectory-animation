@@ -1,7 +1,8 @@
 
-% Cem Sazara
+% Cem Sazara - October 2017
+% 
 % Animation of NGSIM I-80 Vehicle Trajectories
-% Visualizes longitude positions only between 30-600 feets
+
 
 load('trajectories.mat')
 
