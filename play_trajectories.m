@@ -14,14 +14,16 @@ yLimit = [-170 250];
 
 Frames = unique(trajectories(:,2));
 
-for i=i:length(Frames)
-    
-    % Filter data based on section limits 
+for i=1:length(Frames)
     frameData = trajectories(trajectories(:,2)==Frames(i) & ...
         trajectories(:,6)>=sectionLimits(1) & ...
         trajectories(:,6)<=sectionLimits(2),:);
     
-    % Get lateral, logitude position, veh id, length, width and class info
+    if isempty(frameData)
+       continue; 
+    end
+    
+    % Get needed fields
     lateralPos = frameData(:,5);
     longitudePos = frameData(:,6);
     id = num2str(frameData(:,1));
@@ -66,7 +68,7 @@ for i=i:length(Frames)
     xlim(xLimit)
     ylim(yLimit)
     xlabel('Longitude (feet)')
-    ylabel('Latitude (feet)')
+    ylabel('Lateral (feet)')
     
     set(gca,'Ydir','reverse')
     grid on
